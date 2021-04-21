@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block side-bar %}
+  {% if bookmark_list %}
+  <ul>
+    {% for bookmark in bookmark_list %}
+      <table>
+        {{ bookmark.name }}
+      </table>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no BookMarks.</p>
+  {% endif %} 
+{% endblock %}
