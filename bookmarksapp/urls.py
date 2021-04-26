@@ -3,5 +3,7 @@ from . import views
 app_name="bookmarksapp"
 urlpatterns=[
     path('', views.BookMarkListView.as_view(), name="list"),
-    path('new/', views.bookmark_new, name="new")
+    path('new/', views.bookmark_new, name="new"),
+    path('edit/<int:pk>/', views.bookmark_edit, name="edit"),
+    path('delete/<int:pk>/', views.deleteBookMark, name="delete"),
 ]
