@@ -1,15 +1,36 @@
 {% extends "base_generic.html" %}
 
-{% block side-bar %}
-  {% if bookmark_list %}
-  <ul>
-    {% for bookmark in bookmark_list %}
-      <table>
-        {{ bookmark.name }}
-      </table>
+{% block content %}
+
+<div class="p-2 mb-4 bg-dark bg-gradient text-white">
+  <form method="GET">
+    {{ filter.form }}
+    <button type="submit" class="p-1 mb-1 btn btn-info">Filter</button>
+  </form>
+</div>
+
+{% if bookmark_list %}
+<ul>
+
+  <table class="table table-light table-hover">
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    {% for bookmark in filter.qs %}
+    <tr>
+      <td>{{ bookmark.name }}</td>
+      <td><a href="{{ bookmark.url }}">{{ bookmark.url }}</a></td>
+      <td><a class="nav-link" aria-current="page" href="{% url 'bookmarksapp:edit' bookmark.pk %}">Edit</a></td>
+      <td><a class="nav-link" aria-current="page" href="{% url 'bookmarksapp:delete' bookmark.pk %}">Delete</a></td>
+    </tr>
     {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no BookMarks.</p>
-  {% endif %} 
+    </td>
+  </table>
+</ul>
+{% else %}
+<p>There are no BookMarks.</p>
+{% endif %}
 {% endblock %}

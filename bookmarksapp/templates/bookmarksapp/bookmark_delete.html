@@ -1,0 +1,9 @@
+
+{% block content %}
+
+<form action="{% url 'bookmarksapp:delete' bookmark.pk %}" method="POST">
+    {% csrf_token %}
+    <!-- <a href="{% url 'bookmarksapp:list' %}" class="p-1 mb-1 btn btn-secondary btn-sm">Cancel</a> -->
+    <input type="submit" name="Confirm">
+</form>
+{% endblock %}
