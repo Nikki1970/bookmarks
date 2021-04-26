@@ -15,6 +15,6 @@ class BookMark(models.Model):
 
 
 class Folder(models.Model):
-    name = models.CharField(max_length=200)
+    f_name = models.CharField(max_length=200)
     def __str__(self):
-        return self.name
+        return self.f_name

@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div class="container p-3">
+ 
+  <table style="width:15%; padding:30px;" class="table table-light table-hover table-bordered"
+    align="center">
+    <tr>
+      <th>Folders</th>
+    </tr>
+    {% for folder in folders %}
+    <tr>
+      <td><a href="{% url 'bookmarksapp:folder-bookmarks' folder.pk %}" class="btn btn-dark btn-sm">{{ folder }}</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  
+</div>
+{% endblock %}

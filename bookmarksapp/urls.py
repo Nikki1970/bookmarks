@@ -7,4 +7,5 @@ urlpatterns=[
     path('edit/<int:pk>/', views.bookmark_edit, name="edit"),
     path('delete/<int:pk>/', views.deleteBookMark, name="delete"),
     path('folders/', views.folder_list, name="folder-list"),
+    path('folders/bookmark/<int:pk>', views.folder_bookmarks, name="folder-bookmarks")
 ]

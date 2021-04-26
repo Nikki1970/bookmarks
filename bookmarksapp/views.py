@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from bookmarksapp.models import BookMark
+from bookmarksapp.models import BookMark, Folder
 from django.views import generic
 from .forms import BookMarkForm
 from .filters import BookmarkFilter
@@ -43,3 +43,18 @@ def deleteBookMark(request, pk):
     # context = {'bookmark': bookmark}
     return redirect('bookmarksapp:list')
 
+
+def folder_list(request):
+    folders = Folder.objects.all()
+    context = {
+        'folders':folders
+    }
+    return render(request, 'bookmarksapp/folder_list.html', context=context)
+
+def folder_bookmarks(request,pk):
+    folder_instance = Folder.objects.get(id=pk)
+    bookmarks = folder_instance.bookmark_set.all()
+    context = {
+        'bookmarks' : bookmarks
+    }
+    return render(request, 'bookmarksapp/folder_bookmarks.html', context=context)
